@@ -149,15 +149,41 @@ p {
 }
 
 .boton-eliminar {
-    background-color: white;
-    color: red;
+    background-color: red;
+    color: white;
+    padding: 12px 20px;
     border: none;
-    font-size: 20px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
 }
-
 .boton-eliminar:hover {
     cursor: pointer;
 }
 .boton-eliminar:focus {
     outline: none;
+}
+
+.boton-comprar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+  
+#precioTotal {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
 }

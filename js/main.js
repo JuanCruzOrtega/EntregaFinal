@@ -20,6 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //BOTON VACIAR CARRITO
 botonVaciar.addEventListener('click', () => {
+    Swal.fire({
+        title: '¿Está seguro que quiere vaciar el carrito?',
+        showDenyButton: true,
+        
+        confirmButtonText: 'Aceptar',
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire('Su carrito fue vaciado. Gracias por visitarnos!', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('No se ha registrado ningún cambio', '', 'info')
+        }
+      })
+
     carrito.length = 0
     actualizarCarrito()
 })
@@ -78,6 +92,22 @@ const eliminarDelCarrito = (prodId) => {
     actualizarCarrito() 
     console.log(carrito)
 }
+
+//BOTON COMPRAR
+
+const comprarBoton = document.getElementById('comprar')
+
+comprarBoton.addEventListener('click', () => {
+  Swal.fire({
+    icon: 'success',
+    title: 'Su compra fue realizada! Muchas gracias!',
+    showConfirmButton: false,
+    timer: 1000
+  }) 
+  
+  carrito.length = 0
+  actualizarCarrito()
+})
 
 const actualizarCarrito = () => {
 
