@@ -39,49 +39,55 @@ botonVaciar.addEventListener('click', () => {
     actualizarCarrito()
 })
 
-// CREACION DE HTML A TRAVES DE JS
-stockProductos.forEach((producto) => {
-    const div = document.createElement('div')
-    div.classList.add('producto')
-    div.innerHTML = `
-    <img src=${producto.imagen} alt= "">
-    <h3>${producto.nombre}</h3>
-    <p>${producto.desc}</p>
-    <p class="precioProducto">Precio:$ ${producto.precio}</p>
-    <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
-    `
-    contenedorProductos.appendChild(div)
+const productosContainer = document.getElementById('productos-container');
 
-    
-    const boton = document.getElementById(`agregar${producto.id}`)
-    
+fetch('./stock.json')
+  .then((resinicial) => resinicial.json())
 
-    boton.addEventListener('click', () => {
-        
-        agregarAlCarrito(producto.id)
-        
-    })
-})
+  .then((res) => {
+    const stockProductos = res;
 
+    stockProductos.forEach((producto) => {
+      const div = document.createElement('div');
+      div.classList.add('producto');
+      div.innerHTML = `
+      <img src=${producto.imagen} alt="" class="img-fluid" width="250px">
+      <h6>${producto.nombre}</h6>
+      <p class="precioProducto">Precio:$ ${producto.precio}</p>
+      <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+      
+      `;
 
-//AGREGAR AL CARRITO
-const agregarAlCarrito = (prodId) => {
+      contenedorProductos.appendChild(div);
 
-    // VALIDACIÓN DE PRODUCTO REPETIDO
-    const productoRepetido = carrito.some (prod => prod.id === prodId) 
+      const boton = document.getElementById(`agregar${producto.id}`);
 
-    if (productoRepetido){
-        const prod = carrito.map (prod => {
-            if (prod.id === prodId){
-                prod.cantidad++
-            }
-        })
-    } else {
-        const item = stockProductos.find((prod) => prod.id === prodId)
-        carrito.push(item)
-    }
-    actualizarCarrito() 
-}
+      boton.addEventListener('click', () => {
+        agregarAlCarrito(producto.id);
+      });
+    });
+
+    const agregarAlCarrito = (prodId) => {
+      const existe = carrito.some((prod) => prod.id === prodId);
+
+      if (existe) {
+        const prod = carrito.map((prod) => {
+          if (prod.id === prodId) {
+            prod.cantidad++;
+          }
+        });
+      } else {
+        const item = stockProductos.find((prod) => prod.id === prodId);
+        carrito.push(item);
+      }
+      actualizarCarrito();
+    };
+  })
+
+  .catch((e) => {
+    console.log(e);
+  });
+
 
 //ELIMINAR DEL CARRITO
 const eliminarDelCarrito = (prodId) => {

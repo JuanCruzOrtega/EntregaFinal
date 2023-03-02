@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "nombre": "Hamburguesa con bacon",
+        "desc": "Hamburguesa casera con panceta, queso cheddar, lechuga, tomate, cebolla",
+        "precio": 2000,
+        "imagen": "./imagenes/burgermenu1.png",
+        "cantidad": 1
+    },
+    {
+        "id": 2,
+        "nombre": "Cheeseburger",
+        "desc": "Hamburguesa casera con queso cheddar, lechuga, tomate, cebolla",
+        "precio": 2000,
+        "imagen": "./imagenes/burgermenu2.png",
+        "cantidad": 1
+    },
+    {
+        "id": 3,
+        "nombre": "Hamburguesa veggie",
+        "desc": "Hamburguesa de quinoa, arroz integral, porotos negros y remolacha con lechuga. Tomate y cebolla.",
+        "precio": 1800,
+        "imagen": "./imagenes/burgermenu3.png",
+        "cantidad": 1
+    },
+    {
+        "id": 4,
+        "nombre": "Chicken",
+        "desc": "Sandwich de pechuga de pollo rebozada con lechuga, tomate, cebolla morada y mayonesa.",
+        "precio": 1900,
+        "imagen": "./imagenes/burgermenu4.png",
+        "cantidad": 1
+    },
+    {
+        "id": 5,
+        "nombre": "Special",
+        "desc": "Hamburguesa casera vegana a base de plantas con lechuga, tomate, cebolla y salsa burger 54.",
+        "precio": 2200,
+        "imagen": "./imagenes/burgermenu5.png",
+        "cantidad": 1
+    }
+]
